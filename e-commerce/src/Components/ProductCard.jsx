@@ -218,7 +218,7 @@ const ProductCard = ({
       }}
     >
       {/* Image Container */}
-      <Link to={`/product/${id}`} className="relative aspect-[3/4] overflow-hidden bg-gray-100 block">
+      <Link to={`/product/${id}`} className="relative aspect-4/5 overflow-hidden bg-gray-100 block">
         {productImages.length > 0 ? (
           <>
             <img
@@ -377,7 +377,7 @@ const ProductCard = ({
         )}
 
         {/* Title */}
-        <Link to={`/product/${id}`} className="text-[15px] font-semibold text-gray-900 leading-snug line-clamp-2 group-hover:text-primary-600 transition-colors">
+        <Link to={`/product/${id}`} className="text-[15px] sm:text-base font-semibold text-gray-900 leading-snug line-clamp-2 group-hover:text-primary-600 transition-colors">
           {title}
         </Link>
 
@@ -394,8 +394,8 @@ const ProductCard = ({
 
         {/* Price */}
         <div className="space-y-0.5">
-          <div className="flex items-baseline gap-2">
-            <span className="text-lg font-bold text-gray-900">₹{price?.toLocaleString()}</span>
+          <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
+            <span className="text-lg sm:text-xl font-bold text-gray-900">₹{price?.toLocaleString()}</span>
             {(derivedOriginal && derivedOriginal > price) && (
               <span className="text-xs text-gray-500 line-through">M.R.P. ₹{derivedOriginal.toLocaleString()}</span>
             )}
@@ -423,7 +423,7 @@ const ProductCard = ({
         </div>
         </div>
 
-        {/* Add to Cart Button (Desktop) */}
+        {/* Add to Cart Button */}
         <button
           onClick={handleAddToCart}
           disabled={!inStock}

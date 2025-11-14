@@ -452,7 +452,7 @@ const NavBar = ({
                 <span>24/7 Support: 1800-123-4567</span>
               </div>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3 sm:space-x-4 -mr-2">
               <Link
                 to="/track"
                 className="hover:text-primary-200 transition-colors"
@@ -473,7 +473,7 @@ const NavBar = ({
       </div>
 
       {/* Main Navigation */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-1 relative">
+      <div className="max-w-7xl mx-auto px-0 sm:px-4 lg:px-8 mt-1 relative">
         {/* Absolute Logo pinned to left */}
         <div className="absolute inset-y-0 left-0 flex items-center">
           <Link to="/" className="block" aria-label={BRAND_NAME}>
@@ -528,7 +528,7 @@ const NavBar = ({
           </div>
 
           {/* Search Bar */}
-          <div className={`hidden md:flex items-center ${searchFocused ? "flex-[2] max-w-3xl" : "flex-1 max-w-md"} mx-8 transition-all duration-200`}> 
+          <div className={`hidden md:flex items-center ${searchFocused ? "flex-[2] max-w-3xl" : "flex-1 max-w-md"} mx-6 sm:mx-8 transition-all duration-200`}> 
             <div className="relative w-full group">
               <form onSubmit={handleSearch} className="relative">
                 <div
@@ -592,15 +592,15 @@ const NavBar = ({
           </div>
 
           {/* Right Side Actions (hide some when searching) */}
-          <div className="flex items-center space-x-4">
+          <div className="ml-auto flex items-center space-x-2 xs:space-x-3 sm:space-x-4 pr-2">
             {/* Wishlist */}
             {!searchFocused && (
             <button
               onClick={onOpenWishlist}
-              className="relative p-2 text-gray-700 hover:text-primary-600 transition-colors group"
+              className="relative p-2 sm:p-2 text-gray-700 hover:text-primary-600 transition-colors group"
               title="Wishlist"
             >
-              <FaHeart className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <FaHeart className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
               {wishlistCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-bounce">
                   {wishlistCount > 99 ? "99+" : wishlistCount}
@@ -617,7 +617,7 @@ const NavBar = ({
               onTriggerClick={onOpenCart}
               trigger={
                 <span title="Shopping Cart">
-                  <FaShoppingCart className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  <FaShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
                   {cartCount > 0 && (
                     <span className="absolute -top-1 -right-1 bg-primary-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-bounce">
                       {cartCount > 99 ? "99+" : cartCount}
@@ -634,7 +634,7 @@ const NavBar = ({
                 className="relative p-2 text-gray-700 hover:text-primary-600 transition-colors"
                 title="Notifications"
               >
-                <FaBell className="w-5 h-5" />
+                <FaBell className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="absolute -top-1 -right-1 bg-red-500 w-2 h-2 rounded-full"></span>
               </button>
             )}
@@ -735,9 +735,9 @@ const NavBar = ({
               className="lg:hidden p-2 text-gray-700 hover:text-primary-600 transition-colors"
             >
               {isOpen ? (
-                <FaTimes className="w-5 h-5" />
+                <FaTimes className="w-4 h-4 sm:w-5 sm:h-5" />
               ) : (
-                <FaBars className="w-5 h-5" />
+                <FaBars className="w-4 h-4 sm:w-5 sm:h-5" />
               )}
             </button>
           </div>

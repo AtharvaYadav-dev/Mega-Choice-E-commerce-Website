@@ -161,8 +161,8 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </div>
 
-              {/* Floating Elements */}
-              <div className="absolute inset-0 overflow-hidden">
+              {/* Floating Elements (behind content) */}
+              <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
                 {[...Array(6)].map((_, i) => (
                   <div
                     key={i}
@@ -177,8 +177,8 @@ const Hero = () => {
                 ))}
               </div>
 
-              {/* Content */}
-              <div className="relative h-full flex items-center">
+              {/* Content (above particles) */}
+              <div className="relative z-10 h-full flex items-center">
                 <div className="w-full lg:w-3/5 px-8 lg:px-16 text-white">
                   {/* Badge */}
                   <div className="inline-block mb-6 animate-fade-in-down">
@@ -237,7 +237,7 @@ const Hero = () => {
                   >
                     <Link
                       to={slide.link}
-                      className="group inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95"
+                      className="group relative z-20 inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95"
                     >
                       <FaShoppingBag className="mr-3 group-hover:animate-bounce" />
                       {slide.cta}
@@ -314,37 +314,38 @@ const Hero = () => {
             </button>
           </div>
 
-          {/* Play/Pause Button */}
+          {/* Play/Pause Button (smaller on mobile) */}
           <button
             onClick={togglePlayPause}
-            className={`absolute top-6 right-6 w-12 h-12 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-200 shadow-lg ${isHovering ? "opacity-100" : "opacity-70"}`}
+            className={`absolute top-4 sm:top-6 right-4 sm:right-6 w-9 h-9 sm:w-12 sm:h-12 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-200 shadow-lg ${isHovering ? "opacity-100" : "opacity-70"}`}
+            aria-label={isPlaying ? 'Pause slides' : 'Play slides'}
           >
             {isPlaying ? (
-              <FaPause className="text-sm" />
+              <FaPause className="text-xs sm:text-sm" />
             ) : (
-              <FaPlay className="text-sm ml-0.5" />
+              <FaPlay className="text-xs sm:text-sm ml-0.5" />
             )}
           </button>
 
-          {/* Progress Indicators */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-            <div className="flex gap-3">
+          {/* Progress Indicators (smaller and lower on mobile) */}
+          <div className="absolute bottom-2 sm:bottom-6 left-1/2 transform -translate-x-1/2 z-10">
+            <div className="flex gap-2 sm:gap-3">
               {slides.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCurrent(idx)}
-                  className={`h-3 rounded-full transition-all duration-300 border border-white/50 shadow-md ${
+                  className={`h-2 sm:h-3 rounded-full transition-all duration-300 border border-white/50 shadow-md ${
                     idx === current
-                      ? "w-12 bg-white"
-                      : "w-3 bg-white/40 hover:bg-white/60"
+                      ? "w-8 sm:w-12 bg-white"
+                      : "w-2.5 sm:w-3 bg-white/40 hover:bg-white/60"
                   }`}
                 />
               ))}
             </div>
           </div>
 
-          {/* Slide Number */}
-          <div className="absolute top-6 left-6 text-white/80 font-mono text-sm bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
+          {/* Slide Number (smaller on mobile) */}
+          <div className="absolute z-10 top-4 sm:top-6 left-4 sm:left-6 text-white/80 font-mono text-xs sm:text-sm bg-white/20 backdrop-blur-sm px-2 sm:px-3 py-0.5 sm:py-1 rounded-full">
             {String(current + 1).padStart(2, "0")} /{" "}
             {String(slides.length).padStart(2, "0")}
           </div>

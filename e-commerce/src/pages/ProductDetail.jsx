@@ -90,8 +90,8 @@ export default function ProductDetail({ onAddToCart, onToggleWishlist, wishlist 
     .slice(0, 3);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-8 md:py-12">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
         <div className="md:col-span-8">
           <ProductGallery images={images} />
         </div>
@@ -112,7 +112,7 @@ export default function ProductDetail({ onAddToCart, onToggleWishlist, wishlist 
             <ProductProof productId={product.id} baseStock={product.stock || 9} />
           </div>
 
-          <div className="mt-5 grid grid-cols-2 gap-2">
+          <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-2">
             <button onClick={add} className="px-4 py-3 rounded-md bg-amber-400 hover:bg-amber-500 text-gray-900 font-medium">Add to Cart</button>
             <button onClick={() => onToggleWishlist && onToggleWishlist({ id: product.id, title: product.title, price: product.price, image: images[0] })} className={`px-4 py-3 rounded-md border font-medium ${wished ? "bg-red-50 text-red-600 border-red-200" : "hover:bg-gray-50"}`}>{wished ? "Wishlisted" : "Add to Wishlist"}</button>
           </div>
@@ -125,9 +125,9 @@ export default function ProductDetail({ onAddToCart, onToggleWishlist, wishlist 
 
       {/* FBT */}
       {fbt.length > 0 && (
-        <section aria-labelledby="fbt-heading" className="mt-12">
+        <section aria-labelledby="fbt-heading" className="mt-10 md:mt-12">
           <h2 id="fbt-heading" className="text-lg font-semibold text-gray-900">Frequently Bought Together</h2>
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {fbt.map((r) => (
               <article key={r.id} className="border rounded-xl p-3 bg-white">
                 <Link to={`/product/${r.id}`} className="block">
