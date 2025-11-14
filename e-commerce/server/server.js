@@ -19,9 +19,30 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || '';
 const CLIENT_URL = process.env.CLIENT_URL || '';
+const CLIENT_URLS = (process.env.CLIENT_URLS || '')
+  .split(',')
+  .map((s) => s.trim())
+  .filter(Boolean);
+const CLIENT_URL_REGEX = process.env.CLIENT_URL_REGEX ? new RegExp(process.env.CLIENT_URL_REGEX) : null;
 
 // Middleware
-app.use(cors({ origin: CLIENT_URL || true, credentials: true }));
+app.use(
+  cors({
+    origin(origin, cb) {
+      // Allow server-to-server, curl, health checks (no origin)
+      if (!origin) return cb(null, true);
+      // Allow explicit list
+      if (CLIENT_URL && origin === CLIENT_URL) return cb(null, true);
+      if (CLIENT_URLS.length && CLIENT_URLS.includes(origin)) return cb(null, true);
+      // Allow regex match if provided (e.g., preview deployments)
+      if (CLIENT_URL_REGEX && CLIENT_URL_REGEX.test(origin)) return cb(null, true);
+      return cb(null, false);
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 app.use(morgan('dev'));
