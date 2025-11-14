@@ -10,7 +10,6 @@ async function request(path, { method = 'GET', body, headers = {} } = {}) {
       ...headers,
     },
     body: body ? JSON.stringify(body) : undefined,
-    credentials: 'include',
   });
   const contentType = res.headers.get('content-type') || '';
   const data = contentType.includes('application/json') ? await res.json() : await res.text();
