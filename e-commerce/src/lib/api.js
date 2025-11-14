@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const BASE_URL = 'https://mega-choice-e-commerce-website-1.onrender.com';
 
 async function request(path, { method = 'GET', body, headers = {} } = {}) {
   const token = localStorage.getItem('token');
