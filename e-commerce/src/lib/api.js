@@ -1,4 +1,5 @@
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 async function request(path, { method = 'GET', body, headers = {} } = {}) {
   const token = localStorage.getItem('token');
   const res = await fetch(`${BASE_URL}${path}`, {
