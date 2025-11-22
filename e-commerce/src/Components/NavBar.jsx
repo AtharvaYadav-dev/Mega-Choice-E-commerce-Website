@@ -430,16 +430,15 @@ const NavBar = ({
   );
 
   return (
-    <nav 
+    <nav
       ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 overflow-hidden ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 overflow-hidden ${isScrolled
           ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
           : "bg-white border-b border-gray-100"
-      }`}
+        }`}
     >
       {/* Top Bar */}
-      <div className="bg-gradient-to-r from-primary-600 to-primary-700 text-white text-sm">
+      <div className="hidden md:block bg-gradient-to-r from-primary-600 to-primary-700 text-white text-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-6">
@@ -497,17 +496,15 @@ const NavBar = ({
               >
                 <Link
                   to={`/shop?gender=${encodeURIComponent(data.title)}`}
-                  className={`flex items-center px-3 py-2 text-sm font-medium transition-all duration-200 ${
-                    location.pathname.includes(key)
+                  className={`flex items-center px-3 py-2 text-sm font-medium transition-all duration-200 ${location.pathname.includes(key)
                       ? "text-primary-600 bg-primary-50 rounded-lg"
                       : "text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-lg"
-                  }`}
+                    }`}
                 >
                   {data.title}
                   <FaChevronDown
-                    className={`ml-1 w-3 h-3 transition-transform duration-200 ${
-                      activeMenu === key ? "rotate-180" : ""
-                    }`}
+                    className={`ml-1 w-3 h-3 transition-transform duration-200 ${activeMenu === key ? "rotate-180" : ""
+                      }`}
                   />
                 </Link>
                 {activeMenu === key && <MegaMenu category={key} data={data} />}
@@ -528,13 +525,12 @@ const NavBar = ({
           </div>
 
           {/* Search Bar */}
-          <div className={`hidden md:flex items-center ${searchFocused ? "flex-[2] max-w-3xl" : "flex-1 max-w-md"} mx-6 sm:mx-8 transition-all duration-200`}> 
+          <div className={`hidden md:flex items-center ${searchFocused ? "flex-[2] max-w-3xl" : "flex-1 max-w-md"} mx-6 sm:mx-8 transition-all duration-200`}>
             <div className="relative w-full group">
               <form onSubmit={handleSearch} className="relative">
                 <div
-                  className={`relative transition-all duration-500 ease-out ${
-                    searchFocused ? "scale-105" : ""
-                  }`}
+                  className={`relative transition-all duration-500 ease-out ${searchFocused ? "scale-105" : ""
+                    }`}
                 >
                   <input
                     ref={searchRef}
@@ -551,9 +547,8 @@ const NavBar = ({
                     <button
                       type="button"
                       onClick={handleVoiceSearch}
-                      className={`p-2 text-gray-400 hover:text-primary-600 rounded-lg transition-colors ${
-                        showVoiceSearch ? "text-red-500 animate-pulse" : ""
-                      }`}
+                      className={`p-2 text-gray-400 hover:text-primary-600 rounded-lg transition-colors ${showVoiceSearch ? "text-red-500 animate-pulse" : ""
+                        }`}
                       title="Voice search"
                     >
                       <FaMicrophone className="w-4 h-4" />
@@ -595,37 +590,37 @@ const NavBar = ({
           <div className="ml-auto flex items-center space-x-2 xs:space-x-3 sm:space-x-4 pr-2">
             {/* Wishlist */}
             {!searchFocused && (
-            <button
-              onClick={onOpenWishlist}
-              className="relative p-2 sm:p-2 text-gray-700 hover:text-primary-600 transition-colors group"
-              title="Wishlist"
-            >
-              <FaHeart className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
-              {wishlistCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-bounce">
-                  {wishlistCount > 99 ? "99+" : wishlistCount}
-                </span>
-              )}
-            </button>
+              <button
+                onClick={onOpenWishlist}
+                className="relative p-2 sm:p-2 text-gray-700 hover:text-primary-600 transition-colors group"
+                title="Wishlist"
+              >
+                <FaHeart className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
+                {wishlistCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-bounce">
+                    {wishlistCount > 99 ? "99+" : wishlistCount}
+                  </span>
+                )}
+              </button>
             )}
 
             {/* Cart */}
             {!searchFocused && (
-            <MiniCartPopover
-              items={cartItems}
-              onCheckout={onOpenCart}
-              onTriggerClick={onOpenCart}
-              trigger={
-                <span title="Shopping Cart">
-                  <FaShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
-                  {cartCount > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-primary-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-bounce">
-                      {cartCount > 99 ? "99+" : cartCount}
-                    </span>
-                  )}
-                </span>
-              }
-            />
+              <MiniCartPopover
+                items={cartItems}
+                onCheckout={onOpenCart}
+                onTriggerClick={onOpenCart}
+                trigger={
+                  <span title="Shopping Cart">
+                    <FaShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
+                    {cartCount > 0 && (
+                      <span className="absolute -top-1 -right-1 bg-primary-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-bounce">
+                        {cartCount > 99 ? "99+" : cartCount}
+                      </span>
+                    )}
+                  </span>
+                }
+              />
             )}
 
             {/* Notifications */}
@@ -653,9 +648,8 @@ const NavBar = ({
                     </span>
                   </div>
                   <FaChevronDown
-                    className={`w-3 h-3 text-gray-400 transition-transform ${
-                      profileDropdownOpen ? "rotate-180" : ""
-                    }`}
+                    className={`w-3 h-3 text-gray-400 transition-transform ${profileDropdownOpen ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
               ) : (
@@ -670,7 +664,7 @@ const NavBar = ({
 
               {/* Profile Dropdown */}
               {profileDropdownOpen && user && (
-                <div 
+                <div
                   className="fixed w-64 bg-white rounded-xl shadow-lg border border-gray-200 py-2 animate-fade-in-down"
                   style={{
                     top: `${(profileButtonRef.current?.getBoundingClientRect().bottom || 0) + 8}px`,
@@ -786,6 +780,24 @@ const NavBar = ({
                 {link.name}
               </button>
             ))}
+
+            <Link
+              to="/track"
+              className="flex items-center w-full py-3 text-left text-gray-700 hover:text-primary-600 font-medium border-b border-gray-100 last:border-b-0"
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="mr-3 text-primary-500"><FaShippingFast /></span>
+              Track Order
+            </Link>
+
+            <Link
+              to="/offers"
+              className="flex items-center w-full py-3 text-left text-gray-700 hover:text-primary-600 font-medium border-b border-gray-100 last:border-b-0"
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="mr-3 text-primary-500"><FaTags /></span>
+              Offers
+            </Link>
           </div>
         </div>
       )}

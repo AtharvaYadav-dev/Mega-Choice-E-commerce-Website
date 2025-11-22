@@ -131,18 +131,17 @@ const Hero = () => {
         {/* Main Hero Slider */}
         <div
           ref={heroRef}
-          className="relative h-96 sm:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl group"
+          className="relative h-[500px] sm:h-[550px] md:h-[600px] lg:h-[700px] rounded-3xl overflow-hidden shadow-2xl group"
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
         >
           {slides.map((slide, idx) => (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-                idx === current
-                  ? "opacity-100 scale-100"
-                  : "opacity-0 scale-105"
-              }`}
+              className={`absolute inset-0 transition-all duration-1000 ease-in-out ${idx === current
+                ? "opacity-100 scale-100"
+                : "opacity-0 scale-105"
+                }`}
               style={{
                 background: slide.bg,
                 backgroundImage: `url(${slide.image})`,
@@ -179,17 +178,17 @@ const Hero = () => {
 
               {/* Content (above particles) */}
               <div className="relative z-10 h-full flex items-center">
-                <div className="w-full lg:w-3/5 px-8 lg:px-16 text-white">
+                <div className="w-full lg:w-3/5 px-6 sm:px-8 lg:px-16 text-white pt-24 sm:pt-24 lg:pt-0">
                   {/* Badge */}
-                  <div className="inline-block mb-6 animate-fade-in-down">
-                    <span className="bg-white/20 backdrop-blur-md text-white text-sm font-bold px-4 py-2 rounded-full border border-white/30 shadow-lg">
+                  <div className="inline-block mb-3 sm:mb-6 animate-fade-in-down">
+                    <span className="bg-white/20 backdrop-blur-md text-white text-xs sm:text-sm font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/30 shadow-lg">
                       <span className="inline-block w-2 h-2 bg-red-400 rounded-full mr-2 animate-pulse" />
                       {slide.badge}
                     </span>
                   </div>
 
                   {/* Title */}
-                  <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black mb-6 text-shadow-lg leading-tight animate-fade-in-up">
+                  <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-2 sm:mb-6 text-shadow-lg leading-tight animate-fade-in-up">
                     <span
                       className="inline-block animate-bounce-gentle"
                       style={{ animationDelay: "0.1s" }}
@@ -200,7 +199,7 @@ const Hero = () => {
 
                   {/* Subtitle */}
                   <h2
-                    className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 text-shadow animate-fade-in-up"
+                    className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-4 text-shadow animate-fade-in-up"
                     style={{ animationDelay: "0.2s" }}
                   >
                     {slide.subtitle}
@@ -208,7 +207,7 @@ const Hero = () => {
 
                   {/* Description */}
                   <p
-                    className="text-lg sm:text-xl mb-8 opacity-90 text-shadow max-w-md animate-fade-in-up"
+                    className="text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-8 opacity-90 text-shadow max-w-md animate-fade-in-up"
                     style={{ animationDelay: "0.3s" }}
                   >
                     {slide.description}
@@ -216,35 +215,35 @@ const Hero = () => {
 
                   {/* Features */}
                   <div
-                    className="flex flex-wrap gap-4 mb-8 animate-fade-in-up"
+                    className="flex flex-wrap gap-2 sm:gap-4 mb-6 sm:mb-8 animate-fade-in-up"
                     style={{ animationDelay: "0.4s" }}
                   >
                     {slide.features.map((feature, i) => (
                       <div
                         key={i}
-                        className="flex items-center bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full"
+                        className="flex items-center bg-white/10 backdrop-blur-sm px-2 sm:px-3 py-1 rounded-full"
                       >
-                        <FaStar className="w-3 h-3 mr-2 text-yellow-400" />
-                        <span className="text-sm font-medium">{feature}</span>
+                        <FaStar className="w-3 h-3 mr-1.5 sm:mr-2 text-yellow-400" />
+                        <span className="text-xs sm:text-sm font-medium">{feature}</span>
                       </div>
                     ))}
                   </div>
 
                   {/* CTA Button */}
                   <div
-                    className="flex flex-col sm:flex-row gap-4 animate-fade-in-up"
+                    className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in-up"
                     style={{ animationDelay: "0.5s" }}
                   >
                     <Link
                       to={slide.link}
-                      className="group relative z-20 inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95"
+                      className="group relative z-20 inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-gray-900 rounded-full font-bold text-base sm:text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95"
                     >
-                      <FaShoppingBag className="mr-3 group-hover:animate-bounce" />
+                      <FaShoppingBag className="mr-2 sm:mr-3 group-hover:animate-bounce" />
                       {slide.cta}
-                      <FaArrowRight className="ml-3 transform group-hover:translate-x-1 transition-transform" />
+                      <FaArrowRight className="ml-2 sm:ml-3 transform group-hover:translate-x-1 transition-transform" />
                     </Link>
 
-                    <button className="inline-flex items-center justify-center px-6 py-4 bg-white/20 backdrop-blur-sm border border-white/30 text-white rounded-full font-semibold hover:bg-white/30 transition-all duration-300">
+                    <button className="inline-flex items-center justify-center px-5 sm:px-6 py-3 sm:py-4 bg-white/20 backdrop-blur-sm border border-white/30 text-white rounded-full font-semibold text-sm sm:text-base hover:bg-white/30 transition-all duration-300">
                       <FaHeart className="mr-2" />
                       Add to Wishlist
                     </button>
@@ -334,11 +333,10 @@ const Hero = () => {
                 <button
                   key={idx}
                   onClick={() => setCurrent(idx)}
-                  className={`h-2 sm:h-3 rounded-full transition-all duration-300 border border-white/50 shadow-md ${
-                    idx === current
-                      ? "w-8 sm:w-12 bg-white"
-                      : "w-2.5 sm:w-3 bg-white/40 hover:bg-white/60"
-                  }`}
+                  className={`h-2 sm:h-3 rounded-full transition-all duration-300 border border-white/50 shadow-md ${idx === current
+                    ? "w-8 sm:w-12 bg-white"
+                    : "w-2.5 sm:w-3 bg-white/40 hover:bg-white/60"
+                    }`}
                 />
               ))}
             </div>
