@@ -17,9 +17,6 @@ const couponSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-<<<<<<< HEAD
-=======
 
->>>>>>> abd38127457211424207f2d4985f3c0c451dacbb
 const Coupon = mongoose.model('Coupon', couponSchema);
 export default Coupon;

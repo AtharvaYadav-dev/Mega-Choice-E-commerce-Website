@@ -8,8 +8,10 @@ const productSchema = new mongoose.Schema(
     category: { type: String, index: true },
     brand: { type: String },
     images: [{ type: String }],
+    sizes: [{ type: String }],
     stock: { type: Number, default: 0, min: 0 },
     rating: { type: Number, default: 0, min: 0, max: 5 },
+    gender: { type: String, enum: ['Men', 'Women', 'Kids', 'Unisex'], default: 'Unisex', index: true },
     isActive: { type: Boolean, default: true },
   },
   { timestamps: true }

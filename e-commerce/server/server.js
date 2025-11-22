@@ -19,7 +19,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || '';
 const CLIENT_URL = process.env.CLIENT_URL || '';
-const CLIENT_URLS = (process.env.CLIENT_URLS || '')
+const CLIENT_URLS = (process.env.CLIENT_URLS || 'http://localhost:5173')
   .split(',')
   .map((s) => s.trim())
   .filter(Boolean);
